@@ -34,7 +34,7 @@ export const Projects: React.FC = () => {
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
         Project_Content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.",
-        Project_Link: "",
+        Project_Link: "/dashboard/project",
       },
     ],
     []
@@ -78,7 +78,7 @@ export const Projects: React.FC = () => {
                         <div className="w-full flex gap-x-10 items-center">
                           <Link href={Project_Link}>
                             <button className="text-white bg-navy-blue px-10 py-2 rounded-md">
-                              Visit Site
+                              Visit Project
                             </button>
                           </Link>
                           <Link href={"dashboard/billing"}>

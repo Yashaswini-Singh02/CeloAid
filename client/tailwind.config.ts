@@ -22,6 +22,7 @@ const config = {
         "landing-section": "url('/assets/landing/hero-pattern.svg')",
       },
       colors: {
+        indigo: "#8589FF",
         "dark-blue": "#000230",
         "navy-blue": "#000366",
         border: "hsl(var(--border))",
