@@ -7,7 +7,7 @@ const Layout: React.FC<
   }>
 > = ({ children }) => {
   return (
-    <div className="flex">
+    <div className="flex bg-dark-blue">
       <Sidebar />
       <div className="flex-1">{children}</div>
     </div>

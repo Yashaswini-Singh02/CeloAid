@@ -19,29 +19,14 @@ export const Hero: React.FC = () => {
           </button>
         </Link>
       </div>
-      <div className="flex justify-center py-10">
-        {/* <Image
-          className="py-20"
-          src={"/assets/landing/coins.svg"}
-          alt="coins"
-          width={400}
-          height={400}
-        /> */}
-        <Image
-          className="rounded-2xl "
-          src={"/assets/landing/hero.svg"}
-          alt="investing"
-          width={600}
-          height={600}
-        />
-        {/* <Image
-          className="py-20"
-          src={"/assets/landing/coins.svg"}
-          alt="coins"
-          width={400}
-          height={400}
-        /> */}
-      </div>
+
+      <Image
+        className="rounded-2xl mx-auto"
+        src={"/assets/landing/hero.svg"}
+        alt="investing"
+        width={600}
+        height={600}
+      />
     </div>
   );
 };

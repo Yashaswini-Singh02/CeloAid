@@ -18,6 +18,9 @@ const config = {
       },
     },
     extend: {
+      backgroundImage: {
+        "landing-section": "url('/assets/landing/hero-pattern.svg')",
+      },
       colors: {
         "dark-blue": "#000230",
         "navy-blue": "#000366",

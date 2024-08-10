@@ -17,7 +17,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`bg-dark-blue text-white ${inter.className}`}>
+      <body
+        className={`bg-landing-section bg-cover bg-no-repeat bg-dark-blue text-white ${inter.className}`}
+      >
         <Navbar />
         {children}
       </body>
