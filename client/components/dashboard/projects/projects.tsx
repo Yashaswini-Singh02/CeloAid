@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Card,
   CardContent,
@@ -18,6 +20,21 @@ import {
 } from "@/components/ui/drawer";
 import { useMemo } from "react";
 import Link from "next/link";
+import {
+  CollapseTextInput,
+  HealthyRecognition,
+  RightSmallUp,
+  ToBottomOne,
+} from "@icon-park/react";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbList,
+  BreadcrumbPage,
+  BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
+
 interface ProjectDetails {
   Project_Name: "string";
   Project_Description?: "string";
@@ -40,9 +57,19 @@ export const Projects: React.FC = () => {
     []
   );
   return (
-    <section className="mt-12 px-20">
+    <section className="mt-12 px-24">
       <div>
-        <h1 className="text-4xl">Projects</h1>
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem className="text-xl text-white">
+              <BreadcrumbLink href="/dashboard">
+                Projects Overview
+              </BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbSeparator className="text-white" />
+          </BreadcrumbList>
+        </Breadcrumb>
+
         <div className="flex py-8">
           {ProjectDetails.map(
             ({
@@ -51,19 +78,26 @@ export const Projects: React.FC = () => {
               Project_Content,
               Project_Link,
             }) => (
-              <Card key={Project_Name} className="w-96 h-max">
+              <Card key={Project_Name} className="w-96 h-max bg-pale-white">
                 <CardHeader>
-                  <CardTitle className="text-2xl font-bold border-b py-2">
+                  <CardTitle className="text-2xl text-violet font-bold border-b-2 border-dashed border-indigo py-3">
                     {Project_Name}
                   </CardTitle>
                 </CardHeader>
-                <CardDescription className="px-6 max-w-2xl text-md">
+                <CardDescription className="text-gray-900 px-6 max-w-2xl text-md font-medium">
                   <p>{Project_Description}</p>
                 </CardDescription>
                 <CardFooter>
                   <Drawer>
                     <DrawerTrigger asChild>
-                      <button className="text-navy-blue">Know more</button>
+                      <button className="text-violet py-4 text-md font-light flex items-center gap-x-1">
+                        Know more
+                        <ToBottomOne
+                          theme="outline"
+                          size="20"
+                          strokeWidth={3}
+                        />
+                      </button>
                     </DrawerTrigger>
                     <DrawerContent className="px-20">
                       <DrawerHeader>
@@ -75,21 +109,24 @@ export const Projects: React.FC = () => {
                         </DrawerDescription>
                       </DrawerHeader>
                       <DrawerFooter className="w-max text-lg">
-                        <div className="w-full flex gap-x-10 items-center">
+                        <div className="w-full flex gap-x-12 items-center">
                           <Link href={Project_Link}>
-                            <button className="text-white bg-navy-blue px-10 py-2 rounded-md">
+                            <button className="flex items-center gap-x-2 text-white bg-navy-blue px-10 py-2 rounded-md">
                               Visit Project
+                              <RightSmallUp theme="outline" size="24" />
                             </button>
                           </Link>
                           <Link href={"dashboard/billing"}>
-                            <button className="text-white bg-green-600 px-10 py-2 rounded-md">
+                            <button className="text-white flex items-center gap-x-2 bg-dark-purple px-10 py-2 rounded-md">
                               Fund
+                              <HealthyRecognition theme="outline" size="20" />
                             </button>
                           </Link>
 
                           <DrawerClose>
-                            <button className="bg-red-600 text-white px-10 py-2 rounded-md">
+                            <button className="text-violet flex items-center gap-x-2 border-violet border-2 px-10 py-2 rounded-md">
                               Cancel{" "}
+                              <CollapseTextInput theme="outline" size="20" />
                             </button>
                           </DrawerClose>
                         </div>

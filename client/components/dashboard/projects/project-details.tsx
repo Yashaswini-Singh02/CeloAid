@@ -12,7 +12,7 @@ export const ProjectDetails: React.FC = () => {
   }, []);
 
   return (
-    <section className="mt-12 px-20">
+    <section className="mt-12 px-24">
       <div className="relative">
         <div className="fixed inset-0 bg-indigo/30 z-10 h-4/5 w-3/4 mx-auto left-80 top-20 rounded-md"></div>
 

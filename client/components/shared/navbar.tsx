@@ -2,6 +2,8 @@
 
 import { usePathname } from "next/navigation";
 import { useMemo } from "react";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface NavbarRoutes {
   label: string;
@@ -22,26 +24,37 @@ export const Navbar: React.FC = () => {
     ],
     []
   );
+
   const path = usePathname();
   if (path.includes("/dashboard")) {
     return null;
   }
 
   return (
-    <nav className="flex border-white/50 border py-6 mt-8 px-12 m-auto w-max gap-x-10 justify-between rounded-2xl text-xl">
-      <h1>Logo</h1>
-      <div>
-        <ul className="flex gap-x-10">
-          {NavbarRoutes.map(({ label, href }) => (
-            <li className="" key={href}>
-              {label}
-            </li>
-          ))}
-        </ul>
-      </div>
+    <motion.nav
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ delay: 0.25, duration: 1 }}
+      className="flex items-center text-white border-2 bg-gradient-to-r  bg-clip py-4 mt-8 px-10 w-max m-auto gap-x-12 text-2xl justify-between rounded-2xl"
+    >
+      <Image
+        src={"/assets/landing/name-logo.png"}
+        alt="BlocFund"
+        height={100}
+        width={140}
+      />
+
+      <ul className="flex gap-x-10">
+        {NavbarRoutes.map(({ label, href }) => (
+          <li className="" key={href}>
+            {label}
+          </li>
+        ))}
+      </ul>
+
       <div className="flex gap-x-10">
         <button>Connect</button>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
