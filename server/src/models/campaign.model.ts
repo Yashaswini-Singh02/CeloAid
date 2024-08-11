@@ -8,10 +8,13 @@ interface IContributor {
 interface ICampaign extends Document {
   campaignId: number;
   creator: string;
+  name: string;
+  description: string;
   goal: number;
-  deadline: number;
+  deadline: Date;
   completed: boolean;
   failed: boolean;
+  totalFunds: number;
   contributors: IContributor[];
 }
 
@@ -23,10 +26,13 @@ const contributorSchema = new Schema<IContributor>({
 const campaignSchema = new Schema<ICampaign>({
   campaignId: { type: Number, required: true, unique: true },
   creator: { type: String, required: true },
+  name: { type: String, required: true },
+  description: { type: String, required: true },
   goal: { type: Number, required: true },
-  deadline: { type: Number, required: true },
+  deadline: { type: Date, required: true },
   completed: { type: Boolean, default: false },
   failed: { type: Boolean, default: false },
+  totalFunds: { type: Number, default: 0 }, // Add totalFunds field
   contributors: {
     type: [contributorSchema],
     default: [],

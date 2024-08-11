@@ -54,9 +54,9 @@ contract Funding {
         Campaign storage newCampaign = campaigns[campaignCount];
         newCampaign.goal = goal;
         newCampaign.deadline = deadline;
+        campaignCount +=  1;
 
         emit CampaignCreated(campaignCount, goal, deadline);
-        campaignCount++;
     }
 
     function fund(uint256 campaignId) external payable campaignExists(campaignId) notCompleted(campaignId) notFailed(campaignId) {
@@ -66,6 +66,10 @@ contract Funding {
 
         campaign.contributors[msg.sender] += msg.value;
         campaign.totalFunds += msg.value;
+
+        if(campaign.totalFunds >= campaign.goal){
+            campaign.completed = true;
+        }
 
         emit Funded(campaignId, msg.sender, msg.value);
     }
