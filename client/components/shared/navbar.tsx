@@ -51,10 +51,6 @@ export const Navbar: React.FC = () => {
           </li>
         ))}
       </ul>
-
-      <div className="flex gap-x-10">
-        <button>Connect</button>
-      </div>
     </motion.nav>
   );
 };

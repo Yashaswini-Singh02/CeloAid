@@ -2,7 +2,6 @@
 
 import {
   Card,
-  CardContent,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -20,12 +19,7 @@ import {
 } from "@/components/ui/drawer";
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import {
-  CollapseTextInput,
-  HealthyRecognition,
-  RightSmallUp,
-  ToBottomOne,
-} from "@icon-park/react";
+import { RightSmallUp, ToBottomOne } from "@icon-park/react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -36,6 +30,7 @@ import {
 import axios from "axios";
 import { format } from "date-fns";
 import { XIcon } from "lucide-react";
+import { useAccount } from "wagmi";
 
 interface ProjectDetails {
   name: string;
@@ -44,23 +39,27 @@ interface ProjectDetails {
   deadline: string;
 }
 
-export const Projects: React.FC = () => {
+export const UserProjects: React.FC = () => {
   const [projects, setProjects] = useState<ProjectDetails[]>([]);
+  const { address } = useAccount();
 
   useEffect(() => {
     axios.get("http://localhost:8080/api/v1/campaign/").then((response) => {
-      setProjects(response.data.campaigns);
+      setProjects(
+        response.data.campaigns.filter(
+          (campaign: any) => campaign.creator === address
+        )
+      );
     });
   }, []);
 
-  console.log(projects);
   return (
     <section className="mt-12 px-24">
       <div>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="text-xl text-white">
-              <BreadcrumbLink>All Projects</BreadcrumbLink>
+              <BreadcrumbLink>Your Projects</BreadcrumbLink>
             </BreadcrumbItem>
             <BreadcrumbSeparator className="text-white" />
           </BreadcrumbList>
@@ -103,7 +102,9 @@ export const Projects: React.FC = () => {
                     </DrawerHeader>
                     <DrawerFooter className="w-max text-lg">
                       <div className="w-full flex gap-x-12 items-center">
-                        <Link href={`/dashboard/project?campaignId=${campaignId}`}>
+                        <Link
+                          href={`/dashboard/project?campaignId=${campaignId}`}
+                        >
                           <button className="flex items-center gap-x-2 text-white bg-navy-blue px-10 py-2 rounded-md">
                             Visit Project
                             <RightSmallUp theme="outline" size="24" />
@@ -112,8 +113,7 @@ export const Projects: React.FC = () => {
 
                         <DrawerClose>
                           <button className="text-violet flex items-center gap-x-2 border-violet border-2 px-10 py-2 rounded-md">
-                            Cancel{" "}
-                            <XIcon  size="20" />
+                            Cancel <XIcon size="20" />
                           </button>
                         </DrawerClose>
                       </div>

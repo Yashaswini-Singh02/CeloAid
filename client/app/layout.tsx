@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/shared/index";
 import { RainbowKitWalletProvider } from "@/utils/store/rainbowKit";
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </RainbowKitWalletProvider>
+        <Toaster />
       </body>
     </html>
   );
