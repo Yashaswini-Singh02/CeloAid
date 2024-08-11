@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/shared/index";
+import { RainbowKitWalletProvider } from "@/utils/store/rainbowKit";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -20,8 +21,10 @@ export default function RootLayout({
       <body
         className={`bg-landing-section bg-cover bg-no-repeat bg-dark-blue text-white ${inter.className}`}
       >
-        <Navbar />
-        {children}
+        <RainbowKitWalletProvider>
+          <Navbar />
+          {children}
+        </RainbowKitWalletProvider>
       </body>
     </html>
   );

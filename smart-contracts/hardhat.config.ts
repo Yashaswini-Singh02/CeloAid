@@ -11,6 +11,10 @@ const config: HardhatUserConfig = {
       url: "https://forno.dango.celo-testnet.org",
       accounts: [process.env.PRIVATE_KEY!],
     },
+    alfajores: {
+      url: "https://alfajores-forno.celo-testnet.org",
+      accounts: [process.env.PRIVATE_KEY!],
+    }
   },
   etherscan: {
     apiKey: {

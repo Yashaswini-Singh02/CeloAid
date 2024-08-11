@@ -43,12 +43,13 @@ interface ProjectDetails {
 }
 
 export const Projects: React.FC = () => {
+
   const ProjectDetails = useMemo(
     () => [
       {
         Project_Name: "Project Name",
         Project_Description:
-          "Lorem ipsum dolor sit amet, consectetur adipiscing elit",
+          "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.",
         Project_Content:
           "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus luctus urna sed urna ultricies ac tempor dui sagittis. In condimentum facilisis porta.",
         Project_Link: "/dashboard/project",
@@ -56,13 +57,14 @@ export const Projects: React.FC = () => {
     ],
     []
   );
+
   return (
     <section className="mt-12 px-24">
       <div>
         <Breadcrumb>
           <BreadcrumbList>
             <BreadcrumbItem className="text-xl text-white">
-              <BreadcrumbLink href="/dashboard">
+              <BreadcrumbLink>
                 Projects Overview
               </BreadcrumbLink>
             </BreadcrumbItem>
@@ -78,16 +80,16 @@ export const Projects: React.FC = () => {
               Project_Content,
               Project_Link,
             }) => (
-              <Card key={Project_Name} className="w-96 h-max bg-pale-white">
+              <Card key={Project_Name} className="w-96 min-h-80 max-h-80 bg-pale-white flex flex-col">
                 <CardHeader>
                   <CardTitle className="text-2xl text-violet font-bold border-b-2 border-dashed border-indigo py-3">
                     {Project_Name}
                   </CardTitle>
                 </CardHeader>
-                <CardDescription className="text-gray-900 px-6 max-w-2xl text-md font-medium">
+                <CardDescription className="text-gray-900 px-6 max-w-2xl max-h-40 text-md font-medium overflow-hidden">
                   <p>{Project_Description}</p>
                 </CardDescription>
-                <CardFooter>
+                <CardFooter className="flex-1 items-end">
                   <Drawer>
                     <DrawerTrigger asChild>
                       <button className="text-violet py-4 text-md font-light flex items-center gap-x-1">
